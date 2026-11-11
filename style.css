@@ -1,0 +1,231 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    color: #1a1a1a;
+    margin-bottom: 20px;
+}
+
+.mode-selection {
+    margin-bottom: 20px;
+}
+
+.mode-selection select {
+    padding: 8px 12px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.scoreboard {
+    display: flex;
+    justify-content: space-around;
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 20px;
+}
+
+.score-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.score-card span {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.score-card .score {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1a1a1a;
+}
+
+#status {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #007bff;
+    min-height: 27px;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.cell {
+    aspect-ratio: 1;
+    background: #e9ecef;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.cell:hover {
+    background: #dee2e6;
+}
+
+.cell.winning {
+    background: #28a745;
+    color: #ffffff;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    flex: 1;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.btn.primary {
+    background: #007bff;
+    color: white;
+}
+
+.btn.secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.board {
+    position: relative; /* Required for absolute positioning of the winning line */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+/* Winning Line Styles */
+.winning-line {
+    position: absolute;
+    background-color: #28a745;
+    border-radius: 4px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    z-index: 10;
+}
+
+/* Horizontal Lines */
+.winning-line.row-0 { height: 6px; width: 100%; top: 16%; left: 0; }
+.winning-line.row-1 { height: 6px; width: 100%; top: 50%; left: 0; transform: translateY(-50%); }
+.winning-line.row-2 { height: 6px; width: 100%; bottom: 16%; left: 0; }
+
+/* Vertical Lines */
+.winning-line.col-0 { width: 6px; height: 100%; left: 16%; top: 0; }
+.winning-line.col-1 { width: 6px; height: 100%; left: 50%; top: 0; transform: translateX(-50%); }
+.winning-line.col-2 { width: 6px; height: 100%; right: 16%; top: 0; }
+
+/* Diagonal Lines */
+.winning-line.diag-1 {
+    width: 140%;
+    height: 6px;
+    top: 50%;
+    left: -20%;
+    transform: translateY(-50%) rotate(45deg);
+}
+.winning-line.diag-2 {
+    width: 140%;
+    height: 6px;
+    top: 50%;
+    left: -20%;
+    transform: translateY(-50%) rotate(-45deg);
+}
+
+/* Modal Popup Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    animation: popUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    max-width: 320px;
+    width: 90%;
+}
+
+@keyframes popUp {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.modal-content h2 {
+    margin-bottom: 8px;
+    color: #1a1a1a;
+    font-size: 1.5rem;
+}
+
+.modal-content p {
+    margin-bottom: 20px;
+    color: #666;
+    font-size: 0.95rem;
+}

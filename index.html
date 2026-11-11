@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe Web</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Canvas Confetti CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Tic Tac Toe</h1>
+
+        <!-- Mode Selector -->
+        <div class="mode-selection">
+            <label for="gameMode">Game Mode:</label>
+            <select id="gameMode">
+                <option value="pvp">2 Player (Pass & Play)</option>
+                <option value="ai">Player vs AI</option>
+            </select>
+        </div>
+
+        <!-- Modal Popup Banner -->
+        <div id="resultModal" class="modal">
+            <div class="modal-content">
+                <h2 id="modalTitle">Player X Wins!</h2>
+                <p id="modalMessage">Fantastic gameplay!</p>
+                <button id="modalNextBtn" class="btn primary">Play Next Round</button>
+            </div>
+        </div>
+
+        <!-- Scoreboard -->
+        <div class="scoreboard">
+            <div class="score-card">
+                <span id="labelX">Player X</span>
+                <span id="scoreX" class="score">0</span>
+            </div>
+            <div class="score-card">
+                <span>Ties</span>
+                <span id="scoreTies" class="score">0</span>
+            </div>
+            <div class="score-card">
+                <span id="labelO">Player O</span>
+                <span id="scoreO" class="score">0</span>
+            </div>
+        </div>
+
+        <!-- Turn Status Indicator -->
+        <div id="status">Player X's turn</div>
+
+        <!-- Game Board -->
+        <div class="board" id="board">
+            <div id="winningLine" class="winning-line"></div>
+            <div class="cell" data-index="0"></div>
+            <div class="cell" data-index="1"></div>
+            <div class="cell" data-index="2"></div>
+            <div class="cell" data-index="3"></div>
+            <div class="cell" data-index="4"></div>
+            <div class="cell" data-index="5"></div>
+            <div class="cell" data-index="6"></div>
+            <div class="cell" data-index="7"></div>
+            <div class="cell" data-index="8"></div>
+        </div>
+
+        <!-- Action Controls -->
+        <div class="actions">
+            <button id="nextRoundBtn" class="btn primary">Next Round</button>
+            <button id="resetAllBtn" class="btn secondary">Reset Score & Game</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
