@@ -1,7 +1,5 @@
 # ❌⭕ Tic Tac Toe Web App
 
-# ❌⭕ Tic Tac Toe Web App
-
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 
 A clean, responsive, and interactive Tic Tac Toe web application built with vanilla HTML, CSS, and JavaScript. Play against a friend locally in pass-and-play mode or challenge a rule-based AI opponent!
